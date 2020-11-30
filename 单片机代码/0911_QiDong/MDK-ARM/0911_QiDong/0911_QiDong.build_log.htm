@@ -1,0 +1,99 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: ¦ÌVision V5.18.0.0
+Copyright (C) 2016 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: saas ZhangZhen, asda, LIC=50D74-FMVII-ZELH2-9YPDR-Z4PUR-6LSXQ
+ 
+Tool Versions:
+Toolchain:       MDK-ARM Professional  Version: 5.18
+Toolchain Path:  F:\SoftWare\Keil5\ARM\ARMCC\Bin
+C Compiler:      Armcc.exe V5.06 update 1 (build 61)
+Assembler:       Armasm.exe V5.06 update 1 (build 61)
+Linker/Locator:  ArmLink.exe V5.06 update 1 (build 61)
+Library Manager: ArmAr.exe V5.06 update 1 (build 61)
+Hex Converter:   FromElf.exe V5.06 update 1 (build 61)
+CPU DLL:         SARMCM3.DLL V5.18
+Dialog DLL:      DCM.DLL V1.13.6.0
+Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V2.0.18.0
+Dialog DLL:      TCM.DLL V1.14.8.0
+ 
+<h2>Project:</h2>
+C:\Users\ZhangZhen\Desktop\0911_QiDong\MDK-ARM\0911_QiDong.uvprojx
+Project File Date:  09/28/2020
+
+<h2>Output:</h2>
+*** Using Compiler 'V5.06 update 1 (build 61)', folder: 'F:\SoftWare\Keil5\ARM\ARMCC\Bin'
+Build target '0911_QiDong'
+compiling Function_interface.c...
+..\Src\Function_interface.c(178): warning:  #167-D: argument of type "int *" is incompatible with parameter of type "uint32_t *"
+  		Flash_Read_Words(
+AVE_LIMIT_ADD,Flash_Limit_data,sizeof(Flash_Limit_data)/4);
+..\Src\Function_interface.c(189): warning:  #167-D: argument of type "int *" is incompatible with parameter of type "uint32_t *"
+  		Flash_Read_Words(
+AVE_UP_DOWN_ADD,Flash_Up_Down_data,sizeof(Flash_Up_Down_data)/4); 
+..\Src\Function_interface.c(611): warning:  #177-D: variable "bytewritten" was declared but never referenced
+  	uint32_t bytewritten;
+..\Src\Function_interface.c(612): warning:  #177-D: variable "wtext" was declared but never referenced
+  	uint32_t wtext[4];
+..\Src\Function_interface.c(857): warning:  #167-D: argument of type "int *" is incompatible with parameter of type "uint32_t *"
+  			Flash_Read_Words(
+AVE_DATA_ADD,Flash_Save_data,sizeof(Flash_Save_data)/4);  //??flash?Á³??ý¾?
+..\Src\Function_interface.c(877): warning:  #167-D: argument of type "int *" is incompatible with parameter of type "uint32_t *"
+  			Flash_Write_words(
+AVE_DATA_ADD,Flash_Save_data,sizeof(Flash_Save_data)/4);//½«???Âµ????é´???flash??
+..\Src\Function_interface.c(943): warning:  #167-D: argument of type "int *" is incompatible with parameter of type "uint32_t *"
+  			Flash_Read_Words(
+AVE_LIMIT_ADD,Flash_Limit_data,sizeof(Flash_Limit_data)/4);
+..\Src\Function_interface.c(953): warning:  #167-D: argument of type "int *" is incompatible with parameter of type "uint32_t *"
+  			Flash_Write_words(
+AVE_LIMIT_ADD,Flash_Limit_data,sizeof(Flash_Limit_data)/4);//½«???Âµ????é´???flash??
+..\Src\Function_interface.c(992): warning:  #167-D: argument of type "int *" is incompatible with parameter of type "uint32_t *"
+  			Flash_Read_Words(
+AVE_LIMIT_ADD,Flash_Limit_data,sizeof(Flash_Limit_data)/4);  
+..\Src\Function_interface.c(1003): warning:  #167-D: argument of type "int *" is incompatible with parameter of type "uint32_t *"
+  			Flash_Write_words(
+AVE_LIMIT_ADD,Flash_Limit_data,sizeof(Flash_Limit_data)/4);//½«???Âµ????é´???flash??
+..\Src\Function_interface.c(1062): warning:  #167-D: argument of type "int *" is incompatible with parameter of type "uint32_t *"
+  			Flash_Read_Words(
+AVE_LIMIT_ADD,Flash_Limit_data,sizeof(Flash_Limit_data)/4);
+..\Src\Function_interface.c(1069): warning:  #167-D: argument of type "int *" is incompatible with parameter of type "uint32_t *"
+  			Flash_Write_words(
+AVE_LIMIT_ADD,Flash_Limit_data,sizeof(Flash_Limit_data)/4);//½«???Âµ????é´???flash??
+..\Src\Function_interface.c(1096): warning:  #167-D: argument of type "int *" is incompatible with parameter of type "uint32_t *"
+  			Flash_Read_Words(
+AVE_LIMIT_ADD,Flash_Limit_data,sizeof(Flash_Limit_data)/4);
+..\Src\Function_interface.c(1103): warning:  #167-D: argument of type "int *" is incompatible with parameter of type "uint32_t *"
+  			Flash_Write_words(
+AVE_LIMIT_ADD,Flash_Limit_data,sizeof(Flash_Limit_data)/4);//½«???Âµ????é´???flash??
+..\Src\Function_interface.c(1142): warning:  #167-D: argument of type "int *" is incompatible with parameter of type "uint32_t *"
+  			Flash_Read_Words(
+AVE_DATA_ADD,Flash_Save_data,sizeof(Flash_Save_data)/4);//??È¡?æ´????ý¾?
+..\Src\Function_interface.c: 15 warnings, 0 errors
+linking...
+Program Size: Code=38246 RO-data=1818 RW-data=132 ZI-data=20636  
+FromELF: creating hex file...
+"0911_QiDong\0911_QiDong.axf" - 0 Error(s), 15 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: ARM
+                http://www.keil.com/pack/ARM.CMSIS.4.5.0.pack
+                ARM::CMSIS:CORE:4.3.0
+                CMSIS (Cortex Microcontroller Software Interface Standard)
+   * Component: CORE Version: 4.3.0
+
+<h2>Collection of Component include folders:</h2>
+  C:\Users\ZhangZhen\Desktop\0911_QiDong\MDK-ARM\RTE
+  F:\SoftWare\Keil5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include
+  F:\SoftWare\Keil5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include
+
+<h2>Collection of Component Files used:</h2>
+
+   * Component: ARM::CMSIS:CORE:4.3.0
+Build Time Elapsed:  00:00:06
+</pre>
+</body>
+</html>

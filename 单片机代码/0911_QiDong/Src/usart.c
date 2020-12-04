@@ -339,7 +339,7 @@ void HAL_UART_MspDeInit(UART_HandleTypeDef* uartHandle)
 	int LCD_Lower_Jiaozhun[6];	//校准最小值
 	int LCD_Upper_GongCha[6];	//公差最大值
 	int LCD_Lower_GongCha[6];	//公差最小值
-	float K[6];
+	int K[6];
 	int LCD_high[6];						//校准最大值时的电压值
 	int LCD_low[6];						//校准最小时的电压值
 	

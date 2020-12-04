@@ -45,7 +45,7 @@ extern int LCD_Upper_Jiaozhun[6];
 extern int LCD_Lower_Jiaozhun[6];
 extern int LCD_Upper_GongCha[6];
 extern int LCD_Lower_GongCha[6];
-extern float K[6];
+extern int K[6];
 extern int LCD_high[6];
 extern int LCD_low[6];
 	

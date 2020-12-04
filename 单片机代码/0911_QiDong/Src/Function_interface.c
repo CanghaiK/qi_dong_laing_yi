@@ -71,17 +71,17 @@ void Get_Real_Time_data(void)
 	{
 		if(MODE == 1)
 		{
-			LCD_Real_time_data_6[i] = LCD_Lower_Jiaozhun[i] +((ADC_sum_ave[i] - LCD_low[i])*K[i]);
+			LCD_Real_time_data_6[i] = LCD_Lower_Jiaozhun[i] +((ADC_sum_ave[i] - LCD_low[i])*K[i]*0.000001);
 		}
 		if(MODE == 2)
 		{
-			LCD_Real_time_data_6[i] = LCD_Lower_Jiaozhun[i] +((LCD_low[i] - ADC_sum_ave[i])*K[i]);
+			LCD_Real_time_data_6[i] = LCD_Lower_Jiaozhun[i] +((LCD_low[i] - ADC_sum_ave[i])*K[i]*0.000001);
+			printf("%d = %d + ((%d - %d)*%d)\r\n",LCD_Real_time_data_6[i],LCD_Lower_Jiaozhun[i],LCD_low[i],ADC_sum_ave[i],K[i]);
 		}
 		if(MODE == 3)
 		{
 			LCD_Real_time_data_6[i] =  ADC_sum_ave[i];
 		}
-		printf("LCD_Real_time_data_6[5] = %d",LCD_Real_time_data_6[5]);
 		Send_42_data[18+4*i] = (LCD_Real_time_data_6[i]>>24)&0xff ;
 		Send_42_data[19+4*i] = (LCD_Real_time_data_6[i]>>16)&0xff ;                    
 		Send_42_data[20+4*i] = (LCD_Real_time_data_6[i]>>8)&0xff ;
@@ -185,12 +185,13 @@ void Send_Data_Iint(void)
 		 LCD_low[i]            =  Flash_Limit_data[7*i+4];	//校准最小时的电压值
 		 LCD_Upper_GongCha[i]  =  Flash_Limit_data[7*i+5];	//公差最大值
 		 LCD_Lower_GongCha[i]  =  Flash_Limit_data[7*i+6];	//公差最小值
+		printf("DATA%d：%d %d %d %d %d %d %d\r\n",i,Flash_Limit_data[7*i],Flash_Limit_data[7*i+1],K[i],Flash_Limit_data[7*i+3],Flash_Limit_data[7*i+4],Flash_Limit_data[7*i+5],Flash_Limit_data[7*i+6]);
 		}
 		Flash_Read_Words(SAVE_UP_DOWN_ADD,Flash_Up_Down_data,sizeof(Flash_Up_Down_data)/4); 
-		for(i = 0;i<7;i++)
-		{
-			printf("Flash_Limit_data[%d] = %d\r\n",i,Flash_Limit_data[i]);
-		}
+//		for(i = 0;i<7;i++)
+//		{
+//			printf("Flash_Limit_data[%d] = %d\r\n",i,Flash_Limit_data[i]);
+//		}
 		//黄灯电平置高
 		HAL_GPIO_WritePin(GPIOC,GPIO_PIN_1, GPIO_PIN_SET); 
 		//485芯片初始值置低
@@ -933,11 +934,11 @@ void JiaoZhun(void)
 			LCD_high[Channel_Choose - 1] = ADC_sum_ave[Channel_Choose - 1];
 				if(MODE == 1)
 				{
-					K[Channel_Choose - 1] = ((float)(LCD_Upper_Jiaozhun[Channel_Choose - 1] - LCD_Lower_Jiaozhun[Channel_Choose - 1])/(float)(LCD_high[Channel_Choose - 1] - LCD_low[Channel_Choose - 1]));
+					K[Channel_Choose - 1] = 1000000*((float)(LCD_Upper_Jiaozhun[Channel_Choose - 1] - LCD_Lower_Jiaozhun[Channel_Choose - 1])/(float)(LCD_high[Channel_Choose - 1] - LCD_low[Channel_Choose - 1]));
 				}
 				if(MODE == 2)
 				{
-				K[Channel_Choose - 1] = ((float)(LCD_Upper_Jiaozhun[Channel_Choose - 1] - LCD_Lower_Jiaozhun[Channel_Choose - 1])/(float)(LCD_low[Channel_Choose - 1] - LCD_high[Channel_Choose - 1]));
+				K[Channel_Choose - 1] = 1000000*((float)(LCD_Upper_Jiaozhun[Channel_Choose - 1] - LCD_Lower_Jiaozhun[Channel_Choose - 1])/(float)(LCD_low[Channel_Choose - 1] - LCD_high[Channel_Choose - 1]));
 				}
 			//读取flash中的数据	
 			Flash_Read_Words(SAVE_LIMIT_ADD,Flash_Limit_data,sizeof(Flash_Limit_data)/4);
@@ -956,8 +957,6 @@ void JiaoZhun(void)
 //			Erase_flash(SAVE_UP_DOWN_ADD);												//擦除flash 			
 //			Flash_Write_words(SAVE_UP_DOWN_ADD,Flash_Up_Down_data,sizeof(Flash_Up_Down_data)/4);//将更新的数组存入flash中 			
 //			HAL_FLASH_Lock();																											//所著flash  完成新数据的存储	
-				
-			
 			}
 			HAL_Delay(500);
 			Send_8_data[7] = 0x02;
@@ -982,11 +981,11 @@ void JiaoZhun(void)
 			LCD_low[Channel_Choose - 1] = ADC_sum_ave[Channel_Choose - 1];
 				if(MODE == 1)
 				{
-					K[Channel_Choose - 1] = ((float)(LCD_Upper_Jiaozhun[Channel_Choose - 1] - LCD_Lower_Jiaozhun[Channel_Choose - 1])/(float)(LCD_high[Channel_Choose - 1] - LCD_low[Channel_Choose - 1]));
+					K[Channel_Choose - 1] = 1000000*((float)(LCD_Upper_Jiaozhun[Channel_Choose - 1] - LCD_Lower_Jiaozhun[Channel_Choose - 1])/(float)(LCD_high[Channel_Choose - 1] - LCD_low[Channel_Choose - 1]));
 				}
 				if(MODE == 2)
 				{
-				K[Channel_Choose - 1] = ((float)(LCD_Upper_Jiaozhun[Channel_Choose - 1] - LCD_Lower_Jiaozhun[Channel_Choose - 1])/(float)(LCD_low[Channel_Choose - 1] - LCD_high[Channel_Choose - 1]));
+				K[Channel_Choose - 1] = 1000000*((float)(LCD_Upper_Jiaozhun[Channel_Choose - 1] - LCD_Lower_Jiaozhun[Channel_Choose - 1])/(float)(LCD_low[Channel_Choose - 1] - LCD_high[Channel_Choose - 1]));
 				}
 				//从flash读出数据
 			Flash_Read_Words(SAVE_LIMIT_ADD,Flash_Limit_data,sizeof(Flash_Limit_data)/4);  

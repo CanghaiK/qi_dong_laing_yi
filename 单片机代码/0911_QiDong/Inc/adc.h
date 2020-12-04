@@ -34,7 +34,7 @@ extern ADC_HandleTypeDef hadc1;
 
 /* USER CODE BEGIN Private defines */
 extern uint16_t ADC_sum_num ;
-extern uint16_t ADC_sum[6][8];   //存储adc采集的数组
+extern uint16_t ADC_sum[6][10];   //存储adc采集的数组
 extern uint16_t ADC_sum_ave[6];	//处理后的平均电压值
 extern uint16_t ADC_value[6];
 extern uint16_t ADC_old_value[6][5];

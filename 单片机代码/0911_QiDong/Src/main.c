@@ -125,7 +125,6 @@ int main(void)
    // MX_USB_HOST_Process();
 
     /* USER CODE BEGIN 3 */
-		printf("ccccccccccccccccc\r\n");
 		HAL_UART_Receive_IT(&huart3, (uint8_t *)USART3_BUFF,11); 
 		HAL_UART_Receive_IT(&huart4,&res,1); 
 		Touch_check();		//´¥Ãþ¼ì²â

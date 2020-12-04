@@ -179,7 +179,7 @@ void HAL_ADC_MspDeInit(ADC_HandleTypeDef* adcHandle)
 /* USER CODE BEGIN 1 */
 //************************数据定义
 uint16_t ADC_sum_num ;
-uint16_t ADC_sum[6][8];   //存储adc采集的数组
+uint16_t ADC_sum[6][10];   //存储adc采集的数组
 uint16_t ADC_sum_ave[6];	//处理后的平均电压值
 uint16_t ADC_value[6];
 uint16_t ADC_old_value[6][5];
@@ -203,7 +203,7 @@ void ADC_Ave(void)
 	for (i =0;i<6;i++)
 	{
 		ADC_sum[i][ADC_sum_num] = ADC_V_data[i];
-		ADC_sum_ave[i] = (ADC_sum[i][0]+ADC_sum[i][1]+ADC_sum[i][2]+ADC_sum[i][3]+ADC_sum[i][4]+ADC_sum[i][5]+ADC_sum[i][6]+ADC_sum[i][7])/8;
+		ADC_sum_ave[i] = (ADC_sum[i][0]+ADC_sum[i][1]+ADC_sum[i][2]+ADC_sum[i][3]+ADC_sum[i][4]+ADC_sum[i][5]+ADC_sum[i][6]+ADC_sum[i][7]+ADC_sum[i][8]+ADC_sum[i][9])/10;
 		ADC_value[i] = ADC_sum_ave[i];
 		if ((ADC_value[i] - ADC_old_value[i][0]>5) || (ADC_old_value[i][0] - ADC_value[i] >5) ||
 				(ADC_value[i] - ADC_old_value[i][1]>5) || (ADC_old_value[i][1] - ADC_value[i] >5) ||
@@ -221,10 +221,9 @@ void ADC_Ave(void)
 		{
 			ADC_sum_ave[i] = ADC_old_value[i][0];
 		}
-//		printf("第 %d 路的电压值为 %d\r\n",i,ADC_sum_ave[i]);
 	}
 	ADC_sum_num++;
-	if (ADC_sum_num == 8)
+	if (ADC_sum_num == 10)
 		ADC_sum_num = 0;
 }
 /* USER CODE END 1 */
